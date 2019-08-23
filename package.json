@@ -1,0 +1,27 @@
+{
+  "name": "sockit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch src src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "debug": "^4.1.1",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "farmhash": "^3.0.0",
+    "rimraf": "^3.0.0",
+    "socket.io": "^2.2.0",
+    "socket.io-redis": "^5.2.0",
+    "sticky-session": "^1.1.2"
+  }
+}

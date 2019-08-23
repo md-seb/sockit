@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SOCKIT</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io(location.origin);
+    window.ws = socket;
+    socket.on('welcome', data => {
+      console.log(data);
+      socket.emit('hello', {
+        my: 'data3'
+      });
+    });
+    socket.on('connect', () => {
+      document.getElementById('status').textContent = 'Connected to ' + socket.io.uri;
+    });
+    socket.on('disconnect', (reason) => {
+      if (reason === 'io server disconnect') {
+        // the disconnection was initiated by the server, you need to reconnect manually
+        setTimeout(() => socket.connect(), 1000);
+      }
+      // else the socket will automatically try to reconnect
+    });
+  </script>
+  <p id="status">Disconnected</p>
+</body>
+
+</html>
